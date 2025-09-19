@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Gaji Pegawai</title>
+    <style>
+        body { font-family: sans-serif; }
+        table { 
+            width: 60%; 
+            margin: 20px auto; 
+            border-collapse: collapse; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        th, td { 
+            padding: 12px; 
+            border: 1px solid #ddd; 
+            text-align: left; 
+        }
+        thead, tfoot { 
+            background-color: #f2f2f2; 
+            font-weight: bold; 
+        }
+        caption {
+            caption-side: bottom;
+            padding: 10px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+// ---| 1. INISIALISASI DATA AWAL |---
+let namaPegawai = "dodi prayodi";
+let umur = 25;
+let jabatan = "manajer";
+let status = "menikah";
+
+// ---| 2. PERSIAPAN VARIABEL UNTUK PERHITUNGAN |---
+let gajiPokok = 0;
+let tunjanganJabatan = 0;
+let bpjs = 0;
+let tunjanganKeluarga = 0;
+let totalGaji = 0;
+
+// ---| 3. PERHITUNGAN GAJI POKOK (MENGGUNAKAN SWITCH CASE) |---
+// Switch Case digunakan untuk menentukan gaji pokok berdasarkan jabatan 
+switch (jabatan.toLowerCase()) {
+    case "manajer":
+    gajiPokok = 15000000;
+    break;
+    case "asisten manajer":
+    gajiPokok = 10000000;
+    break;
+    case "staff":
+    gajiPokok = 5000000;
+    break;
+    default:
+    gajiPokok = 0;
+}
+
+// ---| 4. PERHITUNGAN TUNJANGAN-TUNJANGAN |---
+tunjanganJabatan = 0.15 * gajiPokok;
+bpjs = 0.10 * gajiPokok;
+
+// Tunjangan Keluarga menggunakan Operator Ternary 
+// Jika status menikah, dapat 20% dari gaji pokok, jika tidak maka 0.
+tunjanganKeluarga = (status.toLowerCase() === "menikah") ? 0.20 * gajiPokok : 0;
+
+// ---| 5. PERHITUNGAN TOTAL GAJI |---
+totalGaji = gajiPokok + tunjanganJabatan + bpjs + tunjanganKeluarga;
+
+// ---| 6. MENAMPILKAN DATA DALAM TABEL HTML |---
+document.write('<h1 style="text-align: center;">Data Gaji Pegawai</h1>');
+document.write('<table>');
+
+// Judul Kolom Tabel
+document.write('<thead>');
+document.write('<tr>');
+document.write('<th>Keterangan</th>');
+document.write('<th>Data</th>');
+document.write('</tr>');
+document.write('</thead>');
+
+// Isi Data Tabel
+document.write('<tbody>');
+document.write('<tr><td>Nama Pegawai</td><td>' + namaPegawai.toUpperCase() + '</td></tr>');
+document.write('<tr><td>Umur</td><td>' + umur + ' Tahun</td></tr>');
+document.write('<tr><td>Jabatan</td><td>' + jabatan + '</td></tr>');
+document.write('<tr><td>Status</td><td>' + status + '</td></tr>');
+document.write('<tr><td>Gaji Pokok</td><td>Rp. ' + gajiPokok.toLocaleString('id-ID') + '</td></tr>');
+document.write('<tr><td>Tunjangan Jabatan (15%)</td><td>Rp. ' + tunjanganJabatan.toLocaleString('id-ID') + '</td></tr>');
+document.write('<tr><td>BPJS (10%)</td><td>Rp. ' + bpjs.toLocaleString('id-ID') + '</td></tr>');
+document.write('<tr><td>Tunjangan Keluarga (20%)</td><td>Rp. ' + tunjanganKeluarga.toLocaleString('id-ID') + '</td></tr>');
+document.write('</tbody>');
+
+// Total Gaji
+document.write('<tfoot>');
+document.write('<tr>');
+document.write('<td>Total Gaji</td>');
+document.write('<td>Rp. ' + totalGaji.toLocaleString('id-ID') + '</td>');
+document.write('</tr>');
+document.write('</tfoot>');
+
+document.write('<caption>Tabel Rincian Gaji Pegawai</caption>');
+document.write('</table>');
+
+</script>
+
+</body>
+</html>
