@@ -1,2 +1,2 @@
-# Tugas-Pemrograman-JavaScript
-Javascript Programming assignment storage place!
+# Kumpulan-Tugas-Studi-Independent
+This is where I store my assignments during my independent study period at NF Academy!.
